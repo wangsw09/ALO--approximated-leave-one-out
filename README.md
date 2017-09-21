@@ -9,3 +9,4 @@ Regarding the structure
 * Think about what should be appropriate test cases;
 * Documentation.
 * Ask Arian the permission to releash the code.
+* Maybe this time, for C function, we should simply provide a Makefile, but not commit those .so and .c files. Cython can compile based on different platform. Committing them makes it hard for Windows users to use it. Instead, provide a guideline for installation (which simply call make). (But how to call make on Windows...)
