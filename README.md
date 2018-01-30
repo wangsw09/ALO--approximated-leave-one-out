@@ -1,12 +1,32 @@
 # Generalized Approximated Leave-One-Out Cross-Validation
 
-This package implements the generalized approximated leave-one-out cross-validation (GALO) in Python.
+This package implements the **Approximated Leave-One-Out Cross-Validation**(ALO) Algorithms.
 
-Regarding the structure
-* This package should mainly focus on ALO part. Since ALO itself has nothing to do with those optimization directly, the input should assume the input is provided;
-* On the other hand, in order to calculate ALO, we should also konw information about loss and regularizers. There should be a parent class that implement general ALO (or we can summarize general ALO into 2 or 3 categories and define a parent class for each type). _Think_ in what form should we pass the infomation about loss and regularizers (mainly their derivatives) to these class. Then for child class, we can provided more detailed choices, in string, for specific statistical problems, such as GLM, matrix completion, SLOPE, etc.
-* Maybe, the parent class should be implemented simply in C functions, to light-weight it, and they wrap it in child class.
-* Think about what should be appropriate test cases;
-* Documentation.
-* Ask Arian the permission to releash the code.
-* Maybe this time, for C function, we should simply provide a Makefile, but not commit those .so and .c files. Cython can compile based on different platform. Committing them makes it hard for Windows users to use it. Instead, provide a guideline for installation (which simply call make). (But how to call make on Windows...)
+## Part II datagen: Data Generation
+This module implements the generation of data under various settings.
+
+### Usage
+To use the data, call function `datagen.model()` by specifying `size` and `model_spec`:
+parameters.
+```python
+model_spec = {"model_type" : "linear",
+              "is_design_iid" : False,
+              "design_distribution" : "normal",
+              "design_mean" : 0.0,
+              "design_scale" : 1.0,
+              "design_prob" : None,
+              "design_corr_strength" : 0.8,
+              "design_corr_type" : "toeplitz",
+              "signal_type" : "positive",
+              "signal_sparsity" : None,
+              "signal_distribution" : "normal",
+              "signal_scale" : 3.0,
+              "is_noise_iid" : False,
+              "noise_tail" : "normal",
+              "noise_scale" : 2.0,
+              "noise_corr_strength" : 0.9,
+              "noise_corr_type" : "toeplitz",
+             }
+y, X, beta = datagen.model((300, 100), **model_spec)"
+```
+
