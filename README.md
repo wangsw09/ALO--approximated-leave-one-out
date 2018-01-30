@@ -1,6 +1,6 @@
-# Approximated Leave-One-Out Cross-Validation
+# Approximated Leave-One-Out Cross-Validation (ALO)
 
-This package implements the **Approximated Leave-One-Out Cross-Validation**(ALO) Algorithms.
+This package implements the **Approximated Leave-One-Out Cross-Validation (ALO)** Algorithms.
 
 ## Part II datagen: Data Generation
 This module implements the generation of data under various settings.
