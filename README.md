@@ -1,4 +1,4 @@
-# Generalized Approximated Leave-One-Out Cross-Validation
+# Approximated Leave-One-Out Cross-Validation
 
 This package implements the **Approximated Leave-One-Out Cross-Validation**(ALO) Algorithms.
 
