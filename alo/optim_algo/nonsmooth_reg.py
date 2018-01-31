@@ -1,5 +1,4 @@
 import numpy as np
-import numpy.random as npr
 from scipy.linalg import eigh as eig_max
 import glmnet_python
 from glmnet import glmnet
