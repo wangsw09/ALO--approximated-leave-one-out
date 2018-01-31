@@ -1,8 +1,10 @@
 # Approximated Leave-One-Out Cross-Validation (ALO)
 
 This package implements the **Approximated Leave-One-Out Cross-Validation (ALO)** Algorithms.
+[Part II datagen: Data Generation][part ii]
+[Debug: Python 2 vs Python 3 of `glmnet_py`][debug]
 
-## Part II datagen: Data Generation
+[part ii]## Part II datagen: Data Generation
 This module implements the generation of data under various settings.
 
 ### Usage
@@ -30,7 +32,7 @@ model_spec = {"model_type" : "linear",  # "linear" or "logistic"
 y, X, beta = datagen.model((300, 100), **model_spec)
 ```
 
-## Debug: Python 2 vs Python 3 of `glmnet_py` package
+[debug]## Debug: Python 2 vs Python 3 of `glmnet_py` package
 In our package, I call and wrap the functions in package glmnet_py for GLM with elastic-net
 type regularizer. Since the package was written in Python 3, there would be some issues
 when installed and imported in Python 2 interpreter. In case you are also using our
