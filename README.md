@@ -8,7 +8,7 @@ This package implements the **Approximated Leave-One-Out Cross-Validation (ALO)*
 
 [create an anchor](#anchors-in-markdown)
 
-(anchors-in-markdown) #anchors-in-markdown
+# anchors in markdown
 
 ## Part II datagen: Data Generation
 This module implements the generation of data under various settings.
