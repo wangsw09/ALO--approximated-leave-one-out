@@ -17,3 +17,13 @@ def L_inf_prox(z, tau):
     tmp = np.empty(p)
     tmp[z_rank] = zs
     return np.copysign(tmp, z)
+
+def slope_prox(z, tau):
+    return None
+
+def proj_positive(z):
+    return np.where(z >= 0, z, 0)
+
+def proj_svm(z, y):
+    cond = z + y / 2.0
+    return np.where(np.fabs(cond) <= 0.5, z,  (- y + np.sign(cond)) / 2.0)
