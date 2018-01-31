@@ -14,7 +14,7 @@ def response(X, beta, eps=None, model_type="linear"):
         return np.dot(X, beta) + eps
     elif model_type == "logistic":
         p = 1.0 / (1.0 + np.exp( - np.dot(X, beta)))
-        return npr.binomial(1, p)
+        return npr.binomial(1, p).astype(np.float64)
     else:
         raise ValueError("<model_type> unidentifiable.")
 
