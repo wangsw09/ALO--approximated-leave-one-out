@@ -1,7 +1,9 @@
 # Approximated Leave-One-Out Cross-Validation (ALO)
 
 This package implements the **Approximated Leave-One-Out Cross-Validation (ALO)** Algorithms.
+
 [Part II datagen: Data Generation][part ii]
+
 [Debug: Python 2 vs Python 3 of `glmnet_py`][debug]
 
 [part ii]## Part II datagen: Data Generation
