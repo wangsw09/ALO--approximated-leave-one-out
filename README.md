@@ -2,13 +2,10 @@
 
 This package implements the **Approximated Leave-One-Out Cross-Validation (ALO)** Algorithms.
 
-[Part II datagen: Data Generation][part ii]
+[Part II datagen: Data Generation][part-ii-datagen:-data-generation]
 
 [Debug: Python 2 vs Python 3 of `glmnet_py`][debug]
 
-[create an anchor](#anchors-in-markdown)
-
-# anchors in markdown
 
 ## Part II datagen: Data Generation
 This module implements the generation of data under various settings.
