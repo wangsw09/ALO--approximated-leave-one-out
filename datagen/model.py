@@ -52,6 +52,8 @@ def model(size, model_type="linear", is_design_iid=True, is_noise_iid=True,
         y = response(X, beta, eps=eps, model_type="linear")
     elif model_type == "logistic":
         y = response(X, beta, model_type="logistic")
+    elif model_type == "svm":
+        y = response(X, beta, model_type="logistic") * 2 - 1
 
     return y, X, beta
 
