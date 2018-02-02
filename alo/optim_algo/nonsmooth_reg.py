@@ -63,7 +63,6 @@ def L_inf(y, X, lam, intercept=False, tol=1e-5, max_iter=500):
         beta = L_inf_prox(beta - ss * np.dot(XTX, beta) + ss * XTy, ss * lam)
         iter_count += 1
 
-    print iter_count
     return beta
 
 

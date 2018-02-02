@@ -5,7 +5,7 @@ from sklearn import svm
 
 from .proximal import *
 
-def svm_linear(y, X, lam, intercept=False, tol=1e-5, max_iter=500):
+def svm_linear(y, X, lam, intercept=False, tol=1e-7):
     clf = svm.LinearSVC(loss='hinge', C=1.0 / lam, tol=tol,
             fit_intercept=intercept)
     clf.fit(X, y)
