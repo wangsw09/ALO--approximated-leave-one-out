@@ -69,16 +69,18 @@ def alo_L_inf(y, X, lam_seq=None, intercept=False, err_func=lambda y1, y2: (y1 -
     else:
         raise NotImplementedError
 
-def alo_svm(y, X, lam_seq=None, intercept=False, err_func=lambda y1, y2: (y1 - y2) ** 2):
+def alo_svm(y, X, lam_seq=None, intercept=False, tol_tr=1e-6, tol_sg=1e-5,
+        max_iter=2000, err_func=lambda y1, y2: (y1 - y2) ** 2):
     n, p = X.shape
     m = lam_seq.shape[0]
     alo_err = np.empty(m)
 
     if intercept is False:
         for i in xrange(m):
-            beta = oa.svm_linear(y, X, lam=lam_seq[i], intercept=False)
+            beta = oa.svm_linear(y, X, lam=lam_seq[i], tol=tol_tr,
+                    max_iter=max_iter, intercept=False)
             u = np.dot(X, beta) * y
-            V = (np.fabs(u - 1) < 1e-6)
+            V = (np.fabs(u - 1.0) < tol_sg)
             S = np.logical_not(V)
             
             a = np.empty(n)
@@ -92,9 +94,9 @@ def alo_svm(y, X, lam_seq=None, intercept=False, err_func=lambda y1, y2: (y1 - y
                 a[V] = 1.0 / lam_seq[i] / np.diag(Y)
                 
                 g[S] = np.where(u[S] > 1, 0, -y[S])
-                g[V] = npla.lstsq(X[V, :].T, np.dot(X[S, :].T, g[S]) -
+                g[V] = npla.lstsq(X[V, :].T, - np.dot(X[S, :].T, g[S]) -
                         lam_seq[i] * beta)[0]
-                
+            
             else:
                 a = np.diag(np.dot(X, X.T)) / lam_seq[i]
                 g = np.where(u > 1, 0, -y[S])

@@ -5,9 +5,9 @@ from sklearn import svm
 
 from .proximal import *
 
-def svm_linear(y, X, lam, intercept=False, tol=1e-7):
+def svm_linear(y, X, lam, intercept=False, tol=1e-8, max_iter=2000):
     clf = svm.LinearSVC(loss='hinge', C=1.0 / lam, tol=tol,
-            fit_intercept=intercept)
+            fit_intercept=intercept, max_iter=max_iter)
     clf.fit(X, y)
     beta = clf.coef_[0]
     return beta
