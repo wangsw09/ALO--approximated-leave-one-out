@@ -5,7 +5,8 @@ from glmnet import glmnet
 
 from .proximal import *
 
-def glm_lasso(y, X, lam=None, lam_seq=None, intercept=False, family="gaussian"):
+def glm_lasso(y, X, lam=None, lam_seq=None, intercept=False,
+        family="gaussian", tol=1e-8, max_iter=5000):
     """
     We are going to simply wrap the functions in glmnet.
     """
@@ -31,7 +32,8 @@ def glm_lasso(y, X, lam=None, lam_seq=None, intercept=False, family="gaussian"):
                         standardize=False)['beta'] * np.std(y)
             else:
                 beta[:, lam_seq_rank] = glmnet(x=X, y=y, family=family, intr=False, alpha=1, nlambda=1,
-                        lambdau=np.asarray(lam_seq_sorted) / n, standardize=False)['beta']
+                        lambdau=np.asarray(lam_seq_sorted) / n,
+                        standardize=False, thresh=tol, maxit=max_iter)['beta']
             return beta
         else:
             beta = np.empty((p, m))
