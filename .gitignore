@@ -5,3 +5,4 @@
 *.ipynb
 stats_*
 !test_datagen.ipynb
+*.pdf
